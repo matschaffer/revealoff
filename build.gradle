@@ -9,6 +9,10 @@ repositories {
 }
 
 dependencies {
+    compile 'org.eclipse.jetty:jetty-server:9.0+'
+    compile 'org.eclipse.jetty:jetty-servlet:9.0+'
+    compile 'org.freemarker:freemarker:2.3.20+'
+    compile 'org.pegdown:pegdown:1.4.1+'
 }
 
 task wrapper(type: Wrapper) {
@@ -18,5 +22,5 @@ task wrapper(type: Wrapper) {
 task run(type: JavaExec) {
     description = 'Runs the server'
     classpath runtimeClasspath
-    main 'Server'
+    main 'SlideServer'
 }
