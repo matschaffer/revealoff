@@ -51,6 +51,9 @@ public class RevealHandler extends AbstractHandler {
         HashMap<String,Object> data = new HashMap<>();
         data.put("slides", new SlideParser().getSlides());
 
+        // TODO: parse config.yml for configuration variables
+        // Allow section directories
+
         Template template = cfg.getTemplate("reveal.html.ftl");
         try {
             template.process(data, response.getWriter());

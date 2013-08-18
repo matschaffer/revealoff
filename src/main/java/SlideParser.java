@@ -25,13 +25,14 @@ public class SlideParser {
     public ArrayList<String> getSlides() throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get("slides.md"));
         String[] slides = StandardCharsets.UTF_8.decode(ByteBuffer.wrap(encoded)).toString().split(SEPARATOR);
+
         ArrayList<String> parsedSlides = new ArrayList<>();
         for(String slide : slides) {
-            // TODO: only drop the first slide if it's blank
-            // TODO: figure out why images in pwd aren't loading
-            if (slide.trim().length() > 0) {
-                parsedSlides.add(processor.markdownToHtml(slide));
-            }
+            parsedSlides.add(processor.markdownToHtml(slide));
+        }
+
+        if (parsedSlides.get(0).trim().length() < 1) {
+            parsedSlides.remove(0);
         }
         return parsedSlides;
     }

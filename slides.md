@@ -22,4 +22,11 @@ A some
       werd
     end
 
-Or maybe
+Or maybe even
+
+    <html>HTML?</html>
+
+!SLIDE
+
+Or inject HTML!
+<script type="text/javascript">console.log("can I sneak JS in here?");</script>

@@ -179,18 +179,16 @@ function Hilitor(id, tag)
 		}
 	}, false );
 
-	// Open the search when the 's' key is hit (yes, this conflicts with the notes plugin, disabling for now)
-	/*
 	document.addEventListener( 'keydown', function( event ) {
 		// Disregard the event if the target is editable or a
 		// modifier is present
 		if ( document.querySelector( ':focus' ) !== null || event.shiftKey || event.altKey || event.ctrlKey || event.metaKey ) return;
 
-		if( event.keyCode === 83 ) {
+		if( event.keyCode === 191 ) {
 			event.preventDefault();
 			openSearch();
 		}
 	}, false );
-*/
+
 	return { open: openSearch };
 })();

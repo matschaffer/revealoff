@@ -19,7 +19,7 @@ public class SlideServer {
         pwdHandler.setResourceBase(".");
 
         ResourceHandler resourceHandler = new ResourceHandler();
-        pwdHandler.setResourceBase(SlideServer.class.getResource(".").getPath());
+        resourceHandler.setResourceBase(SlideServer.class.getResource(".").getPath());
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] { revealHandler, pwdHandler, resourceHandler });
