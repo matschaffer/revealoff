@@ -2,8 +2,8 @@ import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+
+import java.net.URL;
 
 /**
  * Author: Mat Schaffer <matschaffer@netflix.com>
@@ -18,11 +18,17 @@ public class SlideServer {
         ResourceHandler pwdHandler = new ResourceHandler();
         pwdHandler.setResourceBase(".");
 
-        ResourceHandler resourceHandler = new ResourceHandler();
-        resourceHandler.setResourceBase(SlideServer.class.getResource(".").getPath());
+        ResourceHandler revealResourceHandler = new ResourceHandler();
+        URL revealAssets = SlideServer.class.getClassLoader().getResource("reveal");
+
+        if (revealAssets != null) {
+            revealResourceHandler.setResourceBase(revealAssets.toExternalForm());
+        } else {
+            throw new Exception("Couldn't find reveal assets, this is probably a bad build.");
+        }
 
         HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] { revealHandler, pwdHandler, resourceHandler });
+        handlers.setHandlers(new Handler[] { revealHandler, pwdHandler, revealResourceHandler });
         server.setHandler(handlers);
 
         server.start();
