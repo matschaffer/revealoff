@@ -23,6 +23,8 @@ public class SlideParser {
     }
 
     public ArrayList<String> getSlides() throws IOException {
+        // TODO: load all *.md files or look for folders with *.md files to make sections
+
         byte[] encoded = Files.readAllBytes(Paths.get("slides.md"));
         String[] slides = StandardCharsets.UTF_8.decode(ByteBuffer.wrap(encoded)).toString().split(SEPARATOR);
 
