@@ -1,8 +1,8 @@
-apply plugin: 'idea'
-
 apply plugin: 'java'
+apply plugin: 'application'
 
 group = 'com.matschaffer'
+mainClassName = 'SlideServer'
 
 repositories {
     mavenCentral()
@@ -17,10 +17,4 @@ dependencies {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.6'
-}
-
-task run(type: JavaExec) {
-    description = 'Runs the server'
-    classpath runtimeClasspath
-    main 'SlideServer'
 }
