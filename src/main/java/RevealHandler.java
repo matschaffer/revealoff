@@ -27,9 +27,18 @@ public class RevealHandler extends AbstractHandler {
         super();
         cfg = new Configuration();
 
-        FileTemplateLoader devTemplateLoader = new FileTemplateLoader(new File("src/main/resources"));
         ClassTemplateLoader classTemplateLoader = new ClassTemplateLoader(getClass(), "");
-        TemplateLoader[] loaders = new TemplateLoader[] { devTemplateLoader, classTemplateLoader };
+
+        File localResources = new File("src/main/resources");
+        TemplateLoader[] loaders;
+
+        if (localResources.exists()) {
+            FileTemplateLoader devTemplateLoader = new FileTemplateLoader(localResources);
+            loaders = new TemplateLoader[] { devTemplateLoader, classTemplateLoader };
+        } else {
+            loaders = new TemplateLoader[] { classTemplateLoader };
+        }
+
         MultiTemplateLoader mtl = new MultiTemplateLoader(loaders);
 
         cfg.setTemplateLoader(mtl);
