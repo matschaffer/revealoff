@@ -3,18 +3,15 @@ import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.MultiTemplateLoader;
 import freemarker.cache.TemplateLoader;
 import freemarker.template.*;
-import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Author: Mat Schaffer <matschaffer@netflix.com>
@@ -58,6 +55,7 @@ public class RevealHandler extends AbstractHandler {
         baseRequest.setHandled(true);
 
         HashMap<String,Object> data = new HashMap<>();
+        data.put("config", SlideConfiguration.parse(new File("config.json")));
         data.put("slides", new SlideParser().getSlides());
 
         // TODO: parse config.yml for configuration variables
