@@ -58,9 +58,6 @@ public class RevealHandler extends AbstractHandler {
         data.put("config", SlideConfiguration.parse(new File("config.json")));
         data.put("slides", new SlideParser().getSlides());
 
-        // TODO: parse config.yml for configuration variables
-        // Allow section directories
-
         Template template = cfg.getTemplate("reveal.html.ftl");
         try {
             template.process(data, response.getWriter());
