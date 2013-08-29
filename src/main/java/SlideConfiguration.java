@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -7,10 +8,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-/**
- * Author: Mat Schaffer <matschaffer@netflix.com>
- * Created: 8/20/13 10:17 PM
- */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SlideConfiguration {
     String title;
     String description;
