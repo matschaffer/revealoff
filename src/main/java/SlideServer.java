@@ -12,6 +12,8 @@ import java.net.URL;
  */
 public class SlideServer {
     public static void main(String[] args) throws Exception {
+        // TODO: Support an "init" sub-command to generate a skeleton
+
         Server server = new Server(8080);
 
         RevealHandler revealHandler = new RevealHandler();
@@ -35,6 +37,7 @@ public class SlideServer {
         server.start();
         Desktop.getDesktop().browse(server.getURI());
 
+        // TODO: Fix logging with http://www.eclipse.org/jetty/documentation/current/example-logging-log4j.html
         server.join();
     }
 }
