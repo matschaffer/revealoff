@@ -3,6 +3,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 
+import java.awt.Desktop;
 import java.net.URL;
 
 /**
@@ -32,6 +33,8 @@ public class SlideServer {
         server.setHandler(handlers);
 
         server.start();
+        Desktop.getDesktop().browse(server.getURI());
+
         server.join();
     }
 }
