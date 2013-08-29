@@ -25,7 +25,7 @@ public class SlideServer {
         if (revealAssets != null) {
             revealResourceHandler.setResourceBase(revealAssets.toExternalForm());
         } else {
-            throw new Exception("Couldn't find reveal assets, this is probably a bad build.");
+            throw new Exception("Couldn't find reveal assets, please file an issue at " + Revealoff.tracker);
         }
 
         HandlerList handlers = new HandlerList();
