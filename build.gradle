@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'groovy'
 apply plugin: 'application'
 
 group = 'com.matschaffer'
@@ -13,8 +14,14 @@ dependencies {
     compile 'org.eclipse.jetty:jetty-servlet:9.0+'
     compile 'org.freemarker:freemarker:2.3.20+'
     compile 'org.pegdown:pegdown:1.4.1+'
+
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.2+'
+
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.6'
 }
+
+// TODO: Try https://github.com/bintray/gradle-bintray-plugin for publishing
