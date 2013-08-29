@@ -56,8 +56,8 @@
       progress: true,
       history: true,
       center: true,
-      transition: 'default',
-      plugins: ['zoom-js/zoom.js', 'notes/notes.js']
+      transition: "default",
+      plugins: ["zoom-js/zoom.js", "notes/notes.js"]
   };
 
   var config = ${config.json};
