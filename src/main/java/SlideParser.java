@@ -15,27 +15,28 @@ import java.util.ArrayList;
  */
 public class SlideParser {
     PegDownProcessor processor;
+    File markdown;
 
     String SEPARATOR = "!SLIDE";
 
-    public SlideParser() {
+    public SlideParser(File markdown) {
         processor = new PegDownProcessor();
+        this.markdown = markdown;
     }
 
-    public ArrayList<String> getSlides() throws IOException {
-        // TODO: load all *.md files or look for folders with *.md files to make sections
+    public ArrayList<Slide> getSlides() throws IOException {
+        byte[] encoded = Files.readAllBytes(Paths.get(markdown.getPath()));
+        String[] slideStrings = StandardCharsets.UTF_8.decode(ByteBuffer.wrap(encoded)).toString().split(SEPARATOR);
 
-        byte[] encoded = Files.readAllBytes(Paths.get("slides.md"));
-        String[] slides = StandardCharsets.UTF_8.decode(ByteBuffer.wrap(encoded)).toString().split(SEPARATOR);
-
-        ArrayList<String> parsedSlides = new ArrayList<>();
-        for(String slide : slides) {
-            parsedSlides.add(processor.markdownToHtml(slide));
+        ArrayList<Slide> parsedSlides = new ArrayList<>();
+        for(String slide : slideStrings) {
+            parsedSlides.add(new Slide(processor.markdownToHtml(slide)));
         }
 
-        if (parsedSlides.get(0).trim().length() < 1) {
+        if (parsedSlides.get(0).isEmpty()) {
             parsedSlides.remove(0);
         }
+
         return parsedSlides;
     }
 }

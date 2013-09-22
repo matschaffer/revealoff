@@ -73,6 +73,8 @@
     { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
   ];
 
+  // TODO: find out why remotes won't load without notes (maybe make notes a built-in)
+
   for (i in settings.plugins) {
     settings.dependencies.push({ src: 'plugin/' + settings.plugins[i], async: true, callback: hasClassList });
   }

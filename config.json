@@ -1,0 +1,3 @@
+{ "title": "Mat's preso",
+  "theme": "night",
+  "plugins": ["zoom-js/zoom.js", "notes/notes.js", "remotes/remotes.js"] }

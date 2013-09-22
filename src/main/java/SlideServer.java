@@ -37,7 +37,7 @@ public class SlideServer {
         server.start();
         Desktop.getDesktop().browse(server.getURI());
 
-        // TODO: Fix logging with http://www.eclipse.org/jetty/documentation/current/example-logging-log4j.html
+        // TODO: Fix over-logging with http://www.eclipse.org/jetty/documentation/current/example-logging-log4j.html
         server.join();
     }
 }
